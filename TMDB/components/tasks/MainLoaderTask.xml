@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--********** Copyright 2020 Roku Corp.  All Rights
+Reserved. **********-->
+
+<component name="MainLoaderTask" extends="Task">
+    <interface>
+        <field id="content" type="node" />
+        <field id="sectionName" type="roArray" />
+        <field id="sectionEndpoint" type="roArray" />
+    </interface>
+
+    <script type="text/brightscript" uri="MainLoaderTask.brs" />
+    <script type="text/brightscript" uri="pkg:/source/utils.brs" />
+</component>
