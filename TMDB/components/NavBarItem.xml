@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="NavBarItem" extends="Group" focusable="true">
+    <script type="text/brightscript" uri="NavBarItem.brs" />
+    <interface>
+        <field id="itemContent" type="assocarray" onChange="OnContentSet" />
+        <field id="focused" type="boolean" onChange="OnFocusedChanged" />
+
+    </interface>
+    <children>
+        <Label
+            id="label"
+            width="120"
+            height="24"
+            horizAlign="center"
+            vertAlign="center"
+        />
+        <Rectangle
+            id="bottomBorder"
+            width="120"
+            height="4"
+            translation="[0,24]"
+            color="0xFFFFFFFF"
+            visible="false"
+        />
+    </children>
+</component>

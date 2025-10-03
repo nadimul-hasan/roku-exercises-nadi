@@ -19,7 +19,14 @@ Reserved. **********-->
 
 
     <children>
+        <LayoutGroup id="navbar"
+            layoutDirection="horizontal"
+            vertAlignment="center"
+            itemComponentName="NavBarItem"
+            itemSpacings="20"
+            translation="[400,60]">
 
+        </LayoutGroup>
 
         <!-- LoadingIndicator should be visible only in case of waiting for content -->
         <Label
