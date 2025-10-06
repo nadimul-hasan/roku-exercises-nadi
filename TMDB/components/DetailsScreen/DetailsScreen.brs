@@ -70,9 +70,10 @@ sub SetDetailsContent(content as object)
     ' ROKU EXERCISE TASK
     ' Add A button to see all episodes if the content is a series
     ' tip: content.mediaType = "results" and content.type = "series"
-
-
-
+    if content.mediaType = "results" and content.type = "series"
+        buttonList.push("See all Episodes")
+    end if
+    SetButtons(buttonList)
 end sub
 
 sub OnJumpToItem() ' invoked when jumpToItem field is populated
