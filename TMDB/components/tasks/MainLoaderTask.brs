@@ -8,7 +8,6 @@ sub Init()
 end sub
 
 sub GetContent()
-
     rows = []
     index = 0
     for each endpoint in m.top.sectionEndpoint
@@ -78,15 +77,10 @@ sub GetContent()
                 ' Observer(see OnMainContentLoaded in MainScene.brs) is invoked at that moment
                 m.top.content = contentNode
             end if
-
         else
-
             ' parse the feed and build a tree of ContentNodes to populate the GridView
             json = ParseJson(rsp).results
             if json <> invalid
-
-
-
                 value = json
                 if Type(value) = "roArray" ' if parsed key value having other objects in it
                     row = {}
@@ -130,15 +124,21 @@ end sub
 function GetMovieItemData(video as object) as object
     item = {}
     ' populate some standard content metadata fields to be displayed on the GridScreen
+    item.title = video.title
 
     if video.overview <> invalid
         item.description = video.overview
     else
         item.description = video.overview
     end if
+
+    item.releaseDate = video.release_date
+    ' item.avg_vote = video.vote_average
+    ' item.popularity = video.popularity
+
     item.hdPosterURL = "https://media.themoviedb.org/t/p/w600_and_h900_bestv2" + video.poster_path
     if video.backdrop_path <> invalid
-        item.hdBackgroundURL = "https://image.tmdb.org/t/p/w1280/" + video.backdrop_path
+        item.hdBackgroundURL = "https://image.tmdb.org/t/p/w1280" + video.backdrop_path
     end if
 
     return item
@@ -148,17 +148,19 @@ end function
 ' ROKU EXERCISE TASK add more data here
 function GetSeriesItemData(video as object) as object
     item = {}
-    item.type = "series"
     ' populate some standard content metadata fields to be displayed on the GridScreen
     ' Check the TMDB API response for available fields
     ' https://developer.themoviedb.org/reference/tv-series-popular-list
+    item.title = video.name
+    item.releaseDate = video.first_air_date
     if video.overview <> invalid
         item.description = video.overview
     else
         item.description = video.overview
     end if
+
     item.hdPosterURL = "https://media.themoviedb.org/t/p/w600_and_h900_bestv2" + video.poster_path
-    item.hdBackgroundURL = "https://image.tmdb.org/t/p/w1280/" + video.backdrop_path
+    item.hdBackgroundURL = "https://image.tmdb.org/t/p/w1280" + video.backdrop_path
 
     return item
 end function
@@ -168,7 +170,6 @@ end function
 ' ROKU EXERCISE TASK add more data here
 function GetEpisodesItemData(episodeItem as object) as object
     item = {}
-    item.type = "series"
     ' populate some standard content metadata fields to be displayed on the GridScreen
     ' Check the TMDB API response for available fields
     ' https://developer.themoviedb.org/reference/tv-episode-details
@@ -179,7 +180,7 @@ function GetEpisodesItemData(episodeItem as object) as object
         item.description = "No description available"
     end if
 
-    item.hdBackgroundURL = "https://image.tmdb.org/t/p/w1280/" + episodeItem.backdrop_path
+    item.hdBackgroundURL = "https://image.tmdb.org/t/p/w1280" + episodeItem.backdrop_path
 
     return item
 end function
@@ -192,39 +193,13 @@ function GetSeasonData(seasons as object, homeRowIndex as integer, homeItemIndex
     seasonCounter = 0
     if seasons <> invalid
         for each season in seasons
+
+            print "Fetching season " + seasonCounter.ToStr() + " for series id " + seriesId
+            print "Show data from"
+            print GetEpisodesItemData(episodeItem)
+
             episodes = []
-
-            if season.episodes.Count() > 0
-                for each epi in season.episodes
-                    if epi <> invalid
-
-                        episodeData = GetEpisodesItemData(episodeItem)
-                        ' save season title for element to represent it on the episodes screen
-                        episodeData.titleSeason = season.name + " - " + "S" + Str(season.season_number) + "E" + Str(epi.episode_number)
-                        episodeData.episodeName = + "S" + Str(season.season_number) + "E" + Str(epi.episode_number) + ": " + epi.name
-                        episodeData.numEpisodes = season.episodes.Count()
-                        episodeData.description = epi.overview
-                        episodeData.vote_average = epi.vote_average
-                        episodeData.mediaType = "episode"
-                        episodeData.homeRowIndex = homeRowIndex
-                        episodeData.homeItemIndex = homeItemIndex
-                        episodeData.seriesId = seriesId
-                        episodes.Push(episodeData)
-
-
-                    end if
-
-                end for
-                seasonData = GetEpisodesItemData(episodeItem)
-                ' populate season's children field with its episodes
-                ' as a result season's ContentNode will contain episode's nodes
-                seasonData.children = episodes
-                seasonData.titleSeason = season.name
-                ' set content type for season object to represent it on the screen as section with episodes
-                seasonData.contentType = "section"
-                seasonsArray.Push(seasonData)
-                seasonCounter++
-            end if
+            ' print season
 
         end for
     end if
