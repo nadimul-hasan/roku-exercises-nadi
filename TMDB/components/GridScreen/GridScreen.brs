@@ -28,10 +28,12 @@ sub OnItemFocused(event as object) ' invoked when another item is focused
     ' ROKU EXERCISE TASK
     ' update title label with title of focused item
     displayTitle = "Some title"
-    m.titleLabel.text = displayTitle
+    ' m.titleLabel.text = displayTitle
+    m.titleLabel.text = item.title
 
     ' ROKU EXERCISE TASK
     ' update description label with description of focused item (similar to the title label)
+    m.descriptionLabel.text = item.description
 
     ' adding length of playback to the title if item length field was populated
     if item.length <> invalid and item.length <> 0

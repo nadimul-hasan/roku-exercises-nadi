@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--********** Copyright 2020 Roku Corp.  All Rights
 Reserved. **********-->
+<?xml-model href="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd"?>
 
 <component name="GridScreen" extends="Group" initialFocus="RowList">
     <script type="text/brightscript" uri="GridScreen.brs" />

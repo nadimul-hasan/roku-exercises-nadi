@@ -81,5 +81,5 @@ end sub
 
 
 function getURL() as string
-    return "BASE URL HERE"
+    return "https://joaotargino.pythonanywhere.com"
 end function

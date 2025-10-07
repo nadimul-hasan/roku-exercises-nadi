@@ -7,13 +7,14 @@ sub Init()
     m.top.backgroundUri = "pkg:/images/background.jpg"
     m.loadingIndicator = m.top.FindNode("loadingIndicator") ' store loadingIndicator node to m
 
-    InitScreenStack()
+    InitScreenStack() ' a.k.a BackStack
     ShowGridScreen()
 
     ' m.top.setFocus(true)
     m.top.observeField("keyEvent", "onKeyEvent")
 
-    RunContentTask(["Now Playing"], ["/now_playing"]) ' retrieving content", endpoint) ' retrieving content
+    ' RunContentTask(["Now Playing"], ["/now_playing"]) ' retrieving content", endpoint) ' retrieving content
+    RunContentTask(["Top Rated"], ["/tv/top_rated"]) ' retrieving content", endpoint) ' retrieving content
     m.top.SignalBeacon("AppLaunchComplete")
 
     ' to handle Roku Pay we need to create channelStore object in the global node

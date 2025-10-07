@@ -14,7 +14,6 @@ function Init()
     m.timeLabel = m.top.FindNode("timeLabel")
     m.titleLabel = m.top.FindNode("titleLabel")
     m.releaseLabel = m.top.FindNode("releaseLabel")
-
     ' ROKU EXERCISE TASK
     ' Show more details like Title, rating, release date, etc etc.
 
@@ -53,11 +52,13 @@ sub SetDetailsContent(content as object)
     ' Show more details like Title, rating, release date, etc etc.
 
     ' populate screen components with metadata
+    m.titleLabel.text = content.title
     m.description.text = content.description
     m.poster.uri = content.hdPosterUrl
     ' ROKU EXERCISE TASK
     ' add a background with the poster image or some image related to the content
     ' m.top.backgroundUri ...
+    m.top.backgroundUri = content.hdBackgroundURL
 
     if content.length <> invalid and content.length <> 0
         m.timeLabel.text = getTime(content.length)
@@ -70,10 +71,9 @@ sub SetDetailsContent(content as object)
     ' ROKU EXERCISE TASK
     ' Add A button to see all episodes if the content is a series
     ' tip: content.mediaType = "results" and content.type = "series"
-    if content.mediaType = "results" and content.type = "series"
-        buttonList.push("See all Episodes")
-    end if
-    SetButtons(buttonList)
+
+
+
 end sub
 
 sub OnJumpToItem() ' invoked when jumpToItem field is populated
@@ -116,5 +116,7 @@ end function
 sub OnBackgroundUriChange()
     ' ROKU EXERCISE TASK
     ' update the background image with the poster m.top.findNode("backgroundPoster")
-
+    print "TRIGGERING on BG URI CHANGED CALLED"
+    backgroundPoster = m.top.FindNode("backgroundPoster")
+    backgroundPoster.uri = m.top.backgroundUri
 end sub

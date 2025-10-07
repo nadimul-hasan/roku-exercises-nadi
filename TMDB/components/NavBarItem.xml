@@ -3,7 +3,7 @@
     <script type="text/brightscript" uri="NavBarItem.brs" />
     <interface>
         <field id="itemContent" type="assocarray" onChange="OnContentSet" />
-        <field id="focused" type="boolean" onChange="OnFocusedChanged" />
+        <!-- <field id="focused" type="boolean" onChange="OnFocusedChanged" /> -->
 
     </interface>
     <children>

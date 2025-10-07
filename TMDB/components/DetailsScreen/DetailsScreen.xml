@@ -2,8 +2,8 @@
 <!--********** Copyright 2020 Roku Corp.  All Rights
 Reserved. **********-->
 
-<component name="DetailsScreen" extends="Group" initialFocus="Buttons"
-    xsi:noNamespaceSchemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
+<?xml-model href="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd"?>
+<component name="DetailsScreen" extends="Group" initialFocus="Buttons">
     <script type="text/brightscript" uri="DetailsScreen.brs" />
     <script type="text/brightscript" uri="pkg:/source/utils.brs" />
     <interface>
@@ -30,6 +30,14 @@ Reserved. **********-->
 
         <!-- ' ROKU EXERCISE TASK -->
         <!-- add an overlay with some opacity to make the text better to read! -->
+         <Rectangle
+            id="overlay"
+            width="1280"
+            height="720"
+            color="#7f7f7f"
+            blendingEnabled="true"
+            opacity="0.4"
+         />
 
 
 
