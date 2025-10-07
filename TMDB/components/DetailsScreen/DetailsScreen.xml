@@ -19,6 +19,7 @@ Reserved. **********-->
     </interface>
     <children>
 
+        <!-- TODO: which is a better approach ???? ლ(ಠ_ಠ ლ) -->
         <Poster
             id="backgroundPoster"
             width="1280"
@@ -30,16 +31,14 @@ Reserved. **********-->
 
         <!-- ' ROKU EXERCISE TASK -->
         <!-- add an overlay with some opacity to make the text better to read! -->
-         <Rectangle
+        <Rectangle
             id="overlay"
             width="1280"
             height="720"
             color="#7f7f7f"
             blendingEnabled="true"
-            opacity="0.4"
-         />
-
-
+            opacity="0.8"
+        />
 
         <LayoutGroup
             translation="[1166, 154]"
@@ -51,19 +50,6 @@ Reserved. **********-->
             <LayoutGroup
                 itemSpacings="[14, 10]"
                 layoutDirection="vert">
-                <Rectangle
-                    width="201"
-                    height="357"
-                    color="0xFFFFFF00">
-                    <Poster
-                        id="poster"
-                        width="201"
-                        loadWidth="201"
-                        height="357"
-                        loadHeight="357"
-                        loadDisplayMode="scaleToFit"
-                    />
-                </Rectangle>
                 <Label
                     id="titleLabel"
                     maxLines="2"
@@ -77,6 +63,20 @@ Reserved. **********-->
                     wrap="false"
                     horizAlign="right"
                 />
+
+                <Rectangle
+                    width="201"
+                    height="357"
+                    color="0xFFFFFF00">
+                    <Poster
+                        id="poster"
+                        width="201"
+                        loadWidth="201"
+                        height="357"
+                        loadHeight="357"
+                        loadDisplayMode="scaleToFit"
+                    />
+                </Rectangle>
             </LayoutGroup>
             <Group>
                 <LabelList

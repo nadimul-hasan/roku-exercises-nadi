@@ -116,7 +116,6 @@ end function
 sub OnBackgroundUriChange()
     ' ROKU EXERCISE TASK
     ' update the background image with the poster m.top.findNode("backgroundPoster")
-    print "TRIGGERING on BG URI CHANGED CALLED"
     backgroundPoster = m.top.FindNode("backgroundPoster")
     backgroundPoster.uri = m.top.backgroundUri
 end sub
