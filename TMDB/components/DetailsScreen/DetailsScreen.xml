@@ -36,7 +36,6 @@ Reserved. **********-->
             width="1280"
             height="720"
             color="#7f7f7f"
-            blendingEnabled="true"
             opacity="0.8"
         />
 
@@ -50,20 +49,6 @@ Reserved. **********-->
             <LayoutGroup
                 itemSpacings="[14, 10]"
                 layoutDirection="vert">
-                <Label
-                    id="titleLabel"
-                    maxLines="2"
-                    width="201"
-                    wrap="true"
-                    horizAlign="right"
-                />
-                <Label
-                    id="timeLabel"
-                    width="201"
-                    wrap="false"
-                    horizAlign="right"
-                />
-
                 <Rectangle
                     width="201"
                     height="357"
@@ -77,6 +62,19 @@ Reserved. **********-->
                         loadDisplayMode="scaleToFit"
                     />
                 </Rectangle>
+                <Label
+                    id="titleLabel"
+                    maxLines="2"
+                    width="201"
+                    wrap="true"
+                    horizAlign="right"
+                />
+                <Label
+                    id="timeLabel"
+                    width="201"
+                    wrap="false"
+                    horizAlign="right"
+                />
             </LayoutGroup>
             <Group>
                 <LabelList

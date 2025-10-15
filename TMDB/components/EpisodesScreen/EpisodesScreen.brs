@@ -21,6 +21,8 @@ sub OnListItemFocused(event as object) ' invoked when episode is focused
     categoryIndex = m.itemToSection[focusedItem]
 
     ' change focused item in seasons list
+    ' (ﾉಥ益ಥ)ﾉ TODO NADI: something here is broken, 
+    ' not sure why tho - category index is coming as invalid for some reason
     if (categoryIndex - 1) = m.categoryList.jumpToItem
         m.categoryList.animateToItem = categoryIndex
     else if not m.categoryList.IsInFocusChain()
@@ -37,11 +39,18 @@ sub InitSections(content as object)
     sections = []
     sectionCount = 0
     ' goes through seasons and populate "firstItemInSection" and "itemToSection" arrays
-    for each section in content.GetChildren(-1, 0)
-        itemsPerSection = section.GetChildCount()
+    for each section in content.GetChildren(-1, 0) ' go over every season of a show
+        itemsPerSection = section.GetChildCount() ' number of episodes in the current season
         for each child in section.GetChildren(-1, 0)
-            m.itemToSection.Push(sectionCount)
+            ' m.itemToSection.Push(sectionCount)
+            m.itemToSection.Push(section.season_number)
         end for
+
+        '(ﾉಥ益ಥ)ﾉ TODO NADI: how is titleSeason coming out of nowhere ???? it was never mapped before this loop
+        ' assumption for now: though it was never mapped before in MainLoaderTask.brs, when we call the line below
+        ' sections.push({ title: section.titleSeason })
+        ' it is somehow getting created on the fly ????
+        ' but if thats the case how th is it defaulting to a string value ????
         sections.push({ title: section.titleSeason }) ' save title of each season
         m.firstItemInSection.Push(m.firstItemInSection.Peek() + itemsPerSection)
         sectionCount++
@@ -69,8 +78,13 @@ end sub
 sub OnContentChange() ' invoked when EpisodesScreen content is changed
     content = m.top.content
     InitSections(content) ' populate seasons list
+    ' TODO NADI: ATP content here is the whole show (incl. seasons and episodes) 
+
+    ' m.itemsList.content = content.GetChild(0) ' populate episodes list
+    ' stop
     m.itemsList.content = content ' populate episodes list
 end sub
+
 
 sub OnVisibleChange() ' invoked when Episodes screen becomes visible
     if m.top.visible = true
@@ -94,7 +108,7 @@ function onKeyEvent(key as string, press as boolean) as boolean
             m.categoryListGainFocus = true
             ' navigate to seasons list
             m.categoryList.SetFocus(true)
-            m.itemsList.drawFocusFeedback = false
+            m.itemsList.drawFocusFeedback = false ' this field controls the focus ring visibility
             result = true
             ' handle "right" key press
         else if key = "right" and m.categoryList.HasFocus() ' seasons list should be focused

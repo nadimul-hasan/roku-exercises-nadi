@@ -1,2 +1,5 @@
 TMDB/Archive.zip
-TMBD/out
+TMDB/out
+TMDB/.DS_Store
+.vscode/launch.json
+TMDB/out/*
