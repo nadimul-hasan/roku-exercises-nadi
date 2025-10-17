@@ -19,5 +19,15 @@ sub OnContentSet()
 
 end sub
 
-
+sub OnFocusedChanged()
+    focused = m.top.focused
+    if focused = true
+        m.bottomBorder.visible = true
+        m.bottomBorder.color = "#FFFFFF"
+    else
+        m.bottomBorder.visible = false
+        m.bottomBorder.color = "#7f7f7f"
+        m.label.opacity = 0.7
+    end if
+end sub
 

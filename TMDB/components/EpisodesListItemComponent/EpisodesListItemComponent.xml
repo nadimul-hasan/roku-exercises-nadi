@@ -41,7 +41,7 @@
                     maxLines="3"
                     width="310"
                     wrap="true"
-                    ellipsisOnOverflow="true"
+                    leadingEllipsis="false"
                 />
             </LayoutGroup>
         </LayoutGroup>

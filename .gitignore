@@ -3,3 +3,4 @@ TMDB/out
 TMDB/.DS_Store
 .vscode/launch.json
 TMDB/out/*
+out/*
