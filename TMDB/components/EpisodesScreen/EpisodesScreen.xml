@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--********** Copyright 2020 Roku Corp.  All Rights
 Reserved. **********-->
-
-<component name="EpisodesScreen" extends="Group" initialFocus="itemsList"
-    xsi:noNamespaceSchemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
+<?xml-model href="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd"?>
+<component name="EpisodesScreen" extends="Group" initialFocus="itemsList">
     <script type="text/brightscript" uri="EpisodesScreen.brs" />
     <script type="text/brightscript" uri="pkg:/source/utils.brs" />
     <interface>
@@ -24,6 +23,7 @@ Reserved. **********-->
             <MarkupList
                 id="itemsList"
                 itemComponentName="EpisodesListItemComponent"
+                itemContentName = "testContent"
                 focusBitmapUri="pkg:/images/focus.9.png"
                 focusFootprintBitmapUri="pkg:/images/focus.9.png"
                 itemSize="[650, 160]"

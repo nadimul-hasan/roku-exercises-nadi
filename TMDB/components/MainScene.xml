@@ -6,7 +6,6 @@ Reserved. **********-->
     <interface>
         <field id="inputArgs" type="assocarray"/>
         <field id="launchArgs" type="assocarray" />
-
     </interface>
     <script type="text/brightscript" uri="MainScene.brs" />
     <script type="text/brightscript" uri="pkg:/source/utils.brs" />

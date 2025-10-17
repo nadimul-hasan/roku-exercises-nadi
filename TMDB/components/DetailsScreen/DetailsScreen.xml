@@ -19,6 +19,7 @@ Reserved. **********-->
     </interface>
     <children>
 
+        <!-- TODO: which is a better approach ???? ლ(ಠ_ಠ ლ) -->
         <Poster
             id="backgroundPoster"
             width="1280"
@@ -30,16 +31,13 @@ Reserved. **********-->
 
         <!-- ' ROKU EXERCISE TASK -->
         <!-- add an overlay with some opacity to make the text better to read! -->
-         <Rectangle
+        <!-- <Rectangle
             id="overlay"
             width="1280"
             height="720"
             color="#7f7f7f"
-            blendingEnabled="true"
-            opacity="0.4"
-         />
-
-
+            opacity="0.8"
+        /> -->
 
         <LayoutGroup
             translation="[1166, 154]"

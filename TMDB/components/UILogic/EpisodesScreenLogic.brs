@@ -1,12 +1,14 @@
 ' ********** Copyright 2020 Roku Corp.  All Rights Reserved. **********
 
 function ShowEpisodesScreen(content as Object, itemIndex = 0 as Integer) as Object
+    ' here content is the selected tv show's data that we mapped in MainLoaderTask.brs
+
     ' create instance of the EpisodesScreen
     episodesScreen = CreateObject("roSGNode", "EpisodesScreen")
     ' observe selectedItem field so we can know which episode is selected
     episodesScreen.ObserveField("selectedItem", "OnEpisodesScreenItemSelected")
     ' populate episodeScreen with content based on which serial was chosen
-    episodesScreen.content = content
+    episodesScreen.content = content ' here content is the selected TV show
     episodesScreen.jumpToItem = itemIndex
     ShowScreen(episodesScreen)
     return episodesScreen

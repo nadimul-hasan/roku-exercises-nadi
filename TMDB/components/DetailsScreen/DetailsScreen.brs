@@ -39,7 +39,7 @@ end sub
 sub OnContentChange(event as object)
     content = event.getData()
     if content <> invalid
-        m.isContentList = content.GetChildCount() > 0
+        m.isContentList = content.GetChildCount() > 0  ' content here is list of tv shows
         if m.isContentList = false
             SetDetailsContent(content)
             m.buttons.SetFocus(true)
@@ -71,17 +71,23 @@ sub SetDetailsContent(content as object)
     ' ROKU EXERCISE TASK
     ' Add A button to see all episodes if the content is a series
     ' tip: content.mediaType = "results" and content.type = "series"
+    if content.mediaType = "results" and content.type = "series"
+        buttonList.Push("See all Episodes")
+    end if
 
-
-
+    SetButtons(buttonList)
 end sub
 
 sub OnJumpToItem() ' invoked when jumpToItem field is populated
     content = m.top.content
     ' check if jumpToItem field has valid value
     ' it should be set within interval from 0 to content.Getchildcount()
+    ' TODO NADI: what are we even focused on if there wasn't any button here ?
     if content <> invalid and m.top.jumpToItem >= 0 and content.GetChildCount() > m.top.jumpToItem
-        m.top.itemFocused = m.top.jumpToItem
+        ' here we're setting the itemFocused field to the index of the current item to find the focused 
+        ' item from the content list since content has the entire list of items
+        ' TODO NADI: why do we need both jumpToItem and itemFocused ?
+        m.top.itemFocused = m.top.jumpToItem 
     end if
 end sub
 
@@ -116,7 +122,6 @@ end function
 sub OnBackgroundUriChange()
     ' ROKU EXERCISE TASK
     ' update the background image with the poster m.top.findNode("backgroundPoster")
-    print "TRIGGERING on BG URI CHANGED CALLED"
     backgroundPoster = m.top.FindNode("backgroundPoster")
     backgroundPoster.uri = m.top.backgroundUri
 end sub

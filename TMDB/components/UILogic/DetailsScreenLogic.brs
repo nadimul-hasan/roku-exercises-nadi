@@ -3,7 +3,7 @@
 sub ShowDetailsScreen(content as object, selectedItem as integer)
     ' create new instance of details screen
     detailsScreen = CreateObject("roSGNode", "DetailsScreen")
-    detailsScreen.content = content
+    detailsScreen.content = content ' here the content getting passed here is the whole row like "Top Rated"
     detailsScreen.jumpToItem = selectedItem ' set index of item which should be focused
     detailsScreen.ObserveField("visible", "OnDetailsScreenVisibilityChanged")
     detailsScreen.ObserveField("buttonSelected", "OnButtonSelected")
@@ -35,7 +35,7 @@ sub OnButtonSelected(event) ' invoked when button in DetailsScreen is pressed
     selectedItem = details.itemFocused
     if button.id = "see all episodes" ' check if "See all episodes" button is pressed
         ' create EpisodesScreen instance and show it
-        ShowEpisodesScreen(content.GetChild(selectedItem))
+        ShowEpisodesScreen(content.GetChild(selectedItem), selectedItem) ' content.getChild(selectedItem) is the selected TV show
     end if
 end sub
 

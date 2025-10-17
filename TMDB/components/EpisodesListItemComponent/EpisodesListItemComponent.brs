@@ -15,16 +15,22 @@ end sub
 
 sub itemContentChanged() ' invoked when episode data is retrieved
     itemContent = m.top.itemContent ' episode metadata
+    ' TODO NADI: investigate why
+    ' seems like itemContent here is the season here instead of the episode
+    ' should be somehow passing the episode data instead
+    ' stop
     index = 0
     if itemContent <> invalid
         ' populate components with metadata
-        m.poster.uri = itemContent.hdBackgroundURL
-        m.title.text = itemContent.title
+        m.poster.uri = itemContent.still_path
+        ' m.title.text = itemContent.title
+        m.title.text = itemContent.name
         divider = " | "
         if itemContent.episodeName <> invalid
             episode = itemContent.episodeName
         else
-            episode = "E" + Str(index)'+ itemContent.episodePosition
+            ' episode = "E" + Str(index)'+ itemContent.episodePosition
+            episode = "E" + itemContent.episode_number.ToStr()'+ itemContent.episodePosition
         end if
         index++
 

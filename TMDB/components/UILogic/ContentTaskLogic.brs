@@ -19,5 +19,4 @@ sub OnMainContentLoaded() ' invoked when content is ready to be used
     m.loadingIndicator.visible = false ' hide loading indicator because content was retrieved
     m.GridScreen.content = m.contentTask.content ' populate GridScreen with content
     args = m.top.launchArgs
-
 end sub

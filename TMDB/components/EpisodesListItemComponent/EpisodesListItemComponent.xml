@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright (c) 2020 Roku, Inc. All rights reserved. -->
 
-<component name="EpisodesListItemComponent" extends="Group"
-    xsi:noNamespaceSchemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
+<?xml-model href="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd"?>
+<component name="EpisodesListItemComponent" extends="Group">
     <interface>
         <field id="itemContent" type="node" onChange="itemContentChanged" />
+        <field id="randomContent" type="node" onChange="itemContentChanged" />
     </interface>
 
     <script type="text/brightscript" uri="EpisodesListItemComponent.brs" />
@@ -40,7 +41,7 @@
                     maxLines="3"
                     width="310"
                     wrap="true"
-                    ellipsisOnOverflow="true"
+                    leadingEllipsis="false"
                 />
             </LayoutGroup>
         </LayoutGroup>
